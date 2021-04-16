@@ -1,0 +1,12 @@
+#!/bin/bash
+sudo -u ec2-user -i << 'EOF'
+
+# This will affect only the mxnet_p36 Jupyter kernel
+source activate mxnet_p36
+
+pip install -U setuptools wheel numpy scipy
+pip install autogluon==0.1.0
+
+source deactivate
+
+EOF
