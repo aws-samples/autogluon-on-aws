@@ -33,7 +33,7 @@ Parameters:
     Type: String
 
   DefaultCodeRepository:
-    Default: https://github.com/daekeun-ml/autogluon-on-aws
+    Default: https://github.com/aws-samples/autogluon-on-aws/
     Type: String
 
 Resources:
