@@ -1,12 +1,13 @@
 #!/bin/bash
 sudo -u ec2-user -i << 'EOF'
 
-# This will affect only the mxnet_p36 Jupyter kernel
-source activate mxnet_p36
+# This will affect only the pytorch_p38 Jupyter kernel
+source activate pytorch_p38 
 
 pip install -U setuptools wheel numpy scipy
-pip install autogluon==0.1.0
+pip install autogluon==0.5.2
+pip install mxnet-cu110==1.9.1
 
-source deactivate
+conda deactivate
 
 EOF

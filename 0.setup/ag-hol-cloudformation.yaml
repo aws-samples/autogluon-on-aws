@@ -9,11 +9,10 @@ Parameters:
   MLInstanceType:
     Description: SageMaker instance type
     Type: String
-    Default: ml.m4.xlarge
+    Default: ml.g4dn.xlarge
     AllowedValues:
-      - ml.t2.medium
-      - ml.m4.xlarge
-      - ml.p2.xlarge      
+      - ml.g4dn.xlarge
+      - ml.g5.xlarge            
     ConstraintDescription: Must be a valid SageMaker instance type
 
   VpcName:
@@ -122,7 +121,8 @@ Resources:
       SecurityGroupIds:
         - !Ref SecurityGroup
       DefaultCodeRepository: !Ref DefaultCodeRepository
-      VolumeSizeInGB: 50
+      PlatformIdentifier: 'notebook-al2-v2'
+      VolumeSizeInGB: 70
       LifecycleConfigName: !GetAtt BasicNotebookInstanceLifecycleConfig.NotebookInstanceLifecycleConfigName
 
   BasicNotebookInstanceLifecycleConfig:
@@ -135,13 +135,14 @@ Resources:
 
             sudo -u ec2-user -i << 'EOF'
 
-            # This will affect only the mxnet_p36 Jupyter kernel
-            source activate mxnet_p36
+            # This will affect only the pytorch_p38 Jupyter kernel
+            source activate pytorch_p38 
 
             pip install -U setuptools wheel numpy scipy
-            pip install autogluon==0.1.0
+            pip install autogluon==0.5.2
+            pip install mxnet-cu110==1.9.1
 
-            source deactivate
+            conda deactivate
 
             EOF
 

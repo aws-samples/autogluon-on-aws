@@ -17,7 +17,7 @@ CloudFormation 스택은 아래 리소스를 자동으로 생성합니다.
 - SageMaker에 필요한 S3 버킷
 
 AWS CloudFormation 콘솔의 Quick create stack 페이지로 리디렉션된 후 다음 단계를 수행하여 스택을 시작합니다.
-- MLInstanceType: SageMaker notebook instance type을 선택합니다. 미리 설정된 <strong><em>`ml.m4.xlarge`</em></strong>를 사용하셔도 되지만, 만약 충분한 크레딧이 있다면 <strong><em>`ml.p2.xlarge`</em></strong>를 선택하십시오.
+- MLInstanceType: SageMaker notebook instance type을 선택합니다. 미리 설정된 <strong><em>`ml.g4dn.xlarge`</em></strong>를 사용하셔도 되지만, 만약 충분한 크레딧이 있다면 <strong><em>`ml.g5.xlarge`</em></strong>를 선택하십시오.
 - Capabilities 에서 <strong><em>`I acknowledge that AWS CloudFormation might create IAM resources`</em></strong>을 체크합니다.
 - 우측 하단의 `Create stack` 버튼을 누르고, 스택 생성이 완료될 때까지 기다립니다. 약 10분이 소요됩니다.
   
@@ -32,11 +32,11 @@ AWS CloudFormation 콘솔의 Quick create stack 페이지로 리디렉션된 후
 ## Option 2. 수동 환경 설정
 
 ### Lifecycle Configuration 생성
-1. AWS 관리 콘솔(Management Console) 화면의 **AWS Services 리스트**에서 Amazon SageMaker 서비스를 선택합니다.
+1. AWS 관리 콘솔(Management Console) 화면에서 Amazon SageMaker 서비스를 선택합니다. 아래 그림처럼 상단의 검색창에서 sagemaker를 검색하셔도 됩니다.
     ![fig01](./imgs/fig2-01.png)
     **<center>Figure 2-1. AWS Management Console</center>**      
 
-1. Lifecycle Configuration를 생성하기 위해 왼쪽 패널 메뉴 중 `Lifecycle configurations` 을 선택 후, 오른쪽 상단의 `Create configuration` 버튼을 클릭합니다.
+1. Lifecycle Configuration를 생성하기 위해 왼쪽 패널 메뉴 중 `SageMaker dashboard - Lifecycle configurations` 선택, `Notebook Instnace` 탭을 선택 후, 오른쪽 상단의 `Create configuration` 버튼을 클릭합니다.
     ![fig02](./imgs/fig2-02.png)
     **<center>Figure 2-2. Lifecycle configuration</center>**     
 
@@ -51,7 +51,10 @@ AWS CloudFormation 콘솔의 Quick create stack 페이지로 리디렉션된 후
     ![fig04](./imgs/fig2-04.png)
     **<center>Figure 2-4. Create notebook instance</center>** 
 
-1. **Notebook instance settings** 항목에서 Notebook instance name애 `ag-hol-[YOUR-NAME]` 을 입력하고, Notebook instance type에 `ml.p2.xlarge` 인스턴스 타입을 선택합니다. 그런 다음, **Additional configuration** 을 클릭하여 Lifecycle configuration - optional 항목에 `ag-hol-lifecycle` 을 입력합니다.
+1. **Notebook instance settings** 항목에서 Notebook instance name애 `ag-hol-[YOUR-NAME]` 을 입력하고, Notebook instance type에 `ml.g4dn.xlarge` 인스턴스 타입을 선택합니다.
+Platform identifier은 `Amazon Linux 2, Jupyter Lab 3`을 선택하세요.
+
+그런 다음, **Additional configuration** 을 클릭하여 Lifecycle configuration - optional 항목에 `ag-hol-lifecycle` 을 입력하고, Volume sice in GB 항목에 `50`을 입력해 주세요.
     ![fig05](./imgs/fig2-05.png)
     **<center>Figure 2-5. Notebook instance settings</center>**     
 

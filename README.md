@@ -17,9 +17,9 @@ AutoGluon은 AWS에서 구축한 오픈소스 AutoML 툴킷으로 머신 러닝�
 
 ### [3. Computer Vision](3.cv)
 
-### [4. Amazon SageMaker](4.sagemaker)
+### [4. Multimodal Prediction](4.multimodal)
 
-### [5. Hyperparameter Optimization(HPO)](5.hpo)
+### [5. Amazon SageMaker](5.sagemaker)
 
 ## Contributors
 - Daekeun Kim (daekeun@amazon.com)

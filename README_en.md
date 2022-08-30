@@ -16,9 +16,9 @@ Hands-on codes do not need to be executed sequentially or all, but for smooth ha
 
 ### [3. Computer Vision](3.cv)
 
-### [4. Amazon SageMaker](4.sagemaker)
+### [4. Multimodal Prediction](4.multimodal)
 
-### [5. Hyperparameter Optimization(HPO)](5.hpo)
+### [5. Amazon SageMaker](5.sagemaker)
 
 ## Contributors
 - Daekeun Kim (daekeun@amazon.com)
