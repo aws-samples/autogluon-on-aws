@@ -5,28 +5,38 @@
 
 ## Option 1. AWS CloudFormation 환경 설정
 
-본 핸즈온랩에 필요한 AWS 리소스를 생성하기 위해 CloudFormation 스택이 제공됩니다. 아래 링크를 선택하면 스택이 시작될 AWS 콘솔의 CloudFormation 으로 자동 redirection 됩니다.
-- <a href="https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-2#/stacks/create/review?stackName=AIMLWorkshop&amp;templateURL=https://daekeun-workshop-public-material.s3.ap-northeast-2.amazonaws.com/cloudformation/ag-hol-cloudformation.yaml">Launch CloudFormation stack in ap-northeast-2 (Seoul)</a>
-- <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=AIMLWorkshop&amp;templateURL=https://daekeun-workshop-public-material.s3.ap-northeast-2.amazonaws.com/cloudformation/ag-hol-cloudformation.yaml">Launch CloudFormation stack in us-east-1 (N. Virginia)</a>
+본 핸즈온랩에 필요한 AWS 리소스를 생성하기 위해 CloudFormation 스택이 제공됩니다. 
+<a href="https://d3lbsvgimdcyno.cloudfront.net/cloudformation/ag-hol-cloudformation.yaml">[CloudFormation Stack 다운로드]</a> 를 클릭하여 `ag-hol-cloudformation.yaml` 파일을 다운로드합니다.
 
+사용할 리전을 확인 후, 리전에 해당하는 링크를 클릭하여 CloudFormation 페이지로 접속합니다.
+- <a href="https://ap-northeast-2.console.aws.amazon.com/cloudformation/home?region=ap-northeast-2#/stacks/create/template
+">ap-northeast-2 (Seoul)</a>
+- <a href="https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/template
+">us-east-1 (N. Virginia)</a>
+
+[Step 1] Specify template - 아래 그림을 참조하여, Template source 항목에서 `Upload a template file`을 클릭 후, Upload a template file에서 `Choose file` 버튼을 클릭 후, 다운로드받은 `ag-hol-cloudformation.yaml` 파일을 업로드합니다. 업로드가 완료되었다면 우측 하단의 `Next` 버튼을 클릭합니다.
+
+![fig1-01](./imgs/fig1-01.png)
+**<center>Figure 1-1. Specify template</center>**     
+
+[Step 2] Specify stack details - Stack name 항목에서 `AIMLWorkshop`을 입력 후, 우측 하단의 `Next` 버튼을 클릭합니다. MLInstanceType의 경우, 미리 설정된 <strong><em>`ml.g4dn.xlarge`</em></strong>를 사용하셔도 되지만, 만약 충분한 크레딧이 있다면 <strong><em>`ml.g5.xlarge`</em></strong>를 선택하세요.
+
+![fig1-02](./imgs/fig1-02.png)
+**<center>Figure 1-2. Specify stack details</center>**     
+
+[Step 3] Configure stack options - 화면에서 곧바로 우측 하단의 `Next` 버튼을 클릭합니다.
+
+[Step 4] Review - 하단의 Capabilities 에서 <strong><em>`I acknowledge that AWS CloudFormation might create IAM resources`</em></strong>을 체크 후 우측 하단의 `Create stack` 버튼을 누르고, 스택 생성이 완료될 때까지 기다립니다. 약 10분이 소요됩니다.
+  
+![fig1-03](./imgs/fig1-03.png)
+**<center>Figure 1-3. Review</center>**     
 
 CloudFormation 스택은 아래 리소스를 자동으로 생성합니다.
 - EC2 및 SageMaker 인스턴스에 퍼블릭 서브넷 + 보안 그룹이 있는 VPC
 - AWS 리소스에 액세스하는 데 필요한 IAM role
 - Jupyter 노트북에서 모델을 정의하는 SageMaker 노트북 인스턴스. 모델 자체는 SageMaker 서비스를 사용하여 학습됩니다.
 - SageMaker에 필요한 S3 버킷
-
-AWS CloudFormation 콘솔의 Quick create stack 페이지로 리디렉션된 후 다음 단계를 수행하여 스택을 시작합니다.
-- MLInstanceType: SageMaker notebook instance type을 선택합니다. 미리 설정된 <strong><em>`ml.g4dn.xlarge`</em></strong>를 사용하셔도 되지만, 만약 충분한 크레딧이 있다면 <strong><em>`ml.g5.xlarge`</em></strong>를 선택하십시오.
-- Capabilities 에서 <strong><em>`I acknowledge that AWS CloudFormation might create IAM resources`</em></strong>을 체크합니다.
-- 우측 하단의 `Create stack` 버튼을 누르고, 스택 생성이 완료될 때까지 기다립니다. 약 10분이 소요됩니다.
   
-![fig1-01](./imgs/fig1-01.png)
-**<center>Figure 1-1. Create an CloudFormation stack</center>**     
-
-![fig1-02](./imgs/fig1-02.png)
-**<center>Figure 1-2. Stack 생성 중</center>**     
-
 <br>
 
 ## Option 2. 수동 환경 설정
